@@ -1,0 +1,97 @@
+:root {
+  --root-color-hue: 190;
+  --resize: 0px;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: min-content auto minmax(200px, 1fr);
+  grid-template-rows: min-content auto;
+  color: hsl(var(--root-color-hue), 100%, 95%);
+}
+
+.header {
+  grid-column: 1 / -1;
+  height: 80px;
+  background-color: hsl(var(--root-color-hue), 75%, 2%);
+  padding: 10px;
+  display: grid;
+  align-items: center;
+}
+
+.editor-panel {
+  display: grid;
+  grid-template-rows: repeat(auto, 33%);
+  background-color: hsl(var(--root-color-hue), 75%, 2%);
+  width: calc(var(--resize) + (100vw - 20px) * 2 / 5);
+  min-width: 200px;
+}
+
+.resizer {
+  width: 20px;
+  background-color: hsl(var(--root-color-hue), 100%, 40%);
+  box-shadow: inset 0 0 5px hsl(var(--root-color-hue), 100%, 20%);
+  cursor: col-resize;
+}
+
+.resizer:active {
+  opacity: 1;
+}
+
+.editor {
+  display: grid;
+  grid-template-rows: min-content minmax(0px, calc(-3rem + (100vh - 80px) / 3));
+  counter-reset: line-num;
+}
+
+.code:focus-visible {
+  outline: none;
+}
+
+.label {
+  color: hsl(var(--root-color-hue), 100%, 95%);
+  font-weight: bold;
+  border-top: 2px solid hsl(var(--root-color-hue), 100%, 25%);
+  border-bottom: 1px solid hsla(var(--root-color-hue), 100%, 95%, 0.3);
+  padding: 10px 10px;
+}
+
+.code {
+  color: hsl(var(--root-color-hue), 100%, 75%);
+  margin: 5px 5px 5px 10px;
+  overflow: auto;
+}
+
+.code::-webkit-scrollbar {
+  width: 10px;
+}
+
+.code::-webkit-scrollbar-thumb {
+  background: hsl(var(--root-color-hue), 100%, 35%);
+  box-shadow: inset 0 0 5px hsl(var(--root-color-hue), 100%, 5%);
+  border-radius: 5px;
+}
+
+.code > *::before {
+  counter-increment: line-num;
+  content: counter(line-num);
+  opacity: 0.3;
+  margin-right: 10px;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

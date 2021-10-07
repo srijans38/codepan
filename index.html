@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="header">
+        <h1>CodePan</h1>
+      </div>
+      <div class="editor-panel">
+        <div class="editor">
+          <div class="label">HTML</div>
+          <div class="code" id="htmlContent" contenteditable="true">
+            <code></code>
+          </div>
+        </div>
+        <div class="editor">
+          <div class="label">CSS</div>
+          <div class="code" id="cssContent" contenteditable="true"></div>
+        </div>
+        <div class="editor">
+          <div class="label">JS</div>
+          <div class="code" id="jsContent" contenteditable="true"></div>
+        </div>
+      </div>
+      <div class="resizer"></div>
+      <div class="result-panel">
+        <iframe
+          id="result"
+          sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+        ></iframe>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
